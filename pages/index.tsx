@@ -9,7 +9,7 @@ export default function Home() {
         <meta name="description" content="Chat with whoever you want" />
       </Head>
 
-      <Sidebar />
+      <Sidebar/>
     </div>
   );
 }
