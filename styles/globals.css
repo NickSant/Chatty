@@ -14,3 +14,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.MuiPaper-root,
+.MuiDrawer-paper,
+.MuiDrawer-paperAnchorLeft,
+.MuiDrawer-paperAnchorDockedLeft,
+.MuiDrawer-docked {
+  height: 100vh;
+}

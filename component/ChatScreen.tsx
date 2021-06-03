@@ -4,7 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import styled from "styled-components";
 import { auth, db } from "../firebase";
 import MoreVerticalIcon from "@material-ui/icons/MoreVertOutlined";
-import { AttachFileOutlined, InsertEmoticon } from "@material-ui/icons";
+import { AttachFileOutlined, InsertEmoticon, Menu } from "@material-ui/icons";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Message from "./Message";
 import MicIcon from "@material-ui/icons/Mic";
@@ -13,7 +13,7 @@ import firebase from "firebase";
 import getRecipientEmail from "../utils/getRecipientEmail";
 import Timeago from "timeago-react";
 
-const ChatScreen = ({ chat, messages }) => {
+const ChatScreen = ({ chat, messages, openChats }) => {
   const endOfMessageRef = useRef(null);
   const [user] = useAuthState(auth);
   const [input, setInput] = useState("");
@@ -90,6 +90,10 @@ const ChatScreen = ({ chat, messages }) => {
   return (
     <Container>
       <Header>
+        <IconButtonContainer className="menu" onClick={openChats}>
+          <Menu />
+        </IconButtonContainer>
+
         {recipient ? (
           <Avatar src={recipient?.photoURL} />
         ) : (
@@ -141,6 +145,10 @@ const ChatScreen = ({ chat, messages }) => {
 
 export default ChatScreen;
 
+const IconButtonContainer = styled(IconButton)`
+
+`;
+
 const Container = styled.div``;
 
 const Header = styled.div`
@@ -153,6 +161,14 @@ const Header = styled.div`
   height: 80px;
   align-items: center;
   border-bottom: 1px solid whitesmoke;
+
+  .menu {
+    display: none;
+
+    @media (max-width: 499px) {
+      display: block;
+    }
+  }
 `;
 
 const HeaderInformation = styled.div`
@@ -161,6 +177,11 @@ const HeaderInformation = styled.div`
 
   > h3 {
     margin-bottom: 3px;
+    word-break: break-all;
+
+    @media (max-width: 499px) {
+      font-size: 15px;
+    }
   }
 
   > p {

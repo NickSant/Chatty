@@ -1,4 +1,6 @@
+import { Drawer } from "@material-ui/core";
 import Head from "next/head";
+import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import styled from "styled-components";
 import ChatScreen from "../../component/ChatScreen";
@@ -8,15 +10,26 @@ import getRecipientEmail from "../../utils/getRecipientEmail";
 
 const Chat = ({ chat, messages }) => {
   const [user] = useAuthState(auth);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(true);
+
   return (
     <Container>
       <Head>
         <title> Chat with {getRecipientEmail(chat.users, user)}</title>
       </Head>
 
-      <Sidebar />
+      <Sidebar
+        type="drawer"
+        isOpen={isDrawerOpen}
+        setIsOpen={() => setIsDrawerOpen(!isDrawerOpen)}
+      />
+
       <ChatContainer>
-        <ChatScreen chat={chat} messages={messages}/>
+        <ChatScreen
+          openChats={() => setIsDrawerOpen(!isDrawerOpen)}
+          chat={chat}
+          messages={messages}
+        />
       </ChatContainer>
     </Container>
   );
@@ -47,8 +60,6 @@ export async function getServerSideProps(context) {
     id: chatRes.id,
     ...chatRes.data(),
   };
-
-  console.log(chat, messages);
 
   return {
     props: {

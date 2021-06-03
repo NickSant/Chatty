@@ -6,7 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useRouter } from "next/router";
 
-const Chat = ({ id, users }) => {
+const Chat = ({ id, users, closeDrawer = () => {} }) => {
   const router = useRouter();
   const [user] = useAuthState(auth);
   const [recipientSnapshot] = useCollection(
@@ -14,6 +14,7 @@ const Chat = ({ id, users }) => {
   );
 
   const enterChat = () => {
+    closeDrawer();
     router.push(`/chat/${id}`);
   };
 
