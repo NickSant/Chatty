@@ -1,34 +1,106 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Chatty
 
-First, run the development server:
+  
 
-```bash
-npm run dev
-# or
-yarn dev
+![GitHub repo size](https://img.shields.io/github/repo-size/NickSant/Chatty)
+
+![GitHub language count](https://img.shields.io/github/languages/count/NickSant/Chatty)
+
+![GitHub forks](https://img.shields.io/github/forks/NickSant/Chatty)
+
+  
+
+<img  src="chatty.png"  alt="exemplo imagem">
+
+  
+
+> Faça login com sua conta Gmail, adicione chats e converse ao vivo com outros usuários.
+
+### Techs
+A aplicação foi feita utilizando Nextjs com as páginas do chat sendo geradas através do *Server Side Rendering*. A estilização foi feita utilizando Styled-Components e Material-UI. Para os serviços de autenticação e manipulação de dados, foi utilizado os recursos do Firebase.
+
+  <br/>
+
+### Produção
+
+Você pode acessar e utilizar a última versão do Chatty em produção clicando [aqui](https://chatty-me.vercel.app/)
+<br/>
+### Ajustes e melhorias
+
+A base do projeto está pronta, mas ainda há melhorias à serem adicionadas como:
+
+  
+
+- [x] Responsividade mobile
+
+- [ ] Tema dark
+
+- [ ] OAuth com outros provedores, como Facebook
+
+- [ ] Troca de tela de fundo do chat
+
+- [ ] Envio de imagens
+
+  <br/>
+
+## 🚀 Instalando o Chatty
+
+  
+
+Para instalar o Chatty, siga estas etapas:
+
+  
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+npm install
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+  
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+ou
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+  
 
-## Learn More
+yarn install
 
-To learn more about Next.js, take a look at the following resources:
+```
+<br/>
+  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ☕ Usando Chatty
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  
 
-## Deploy on Vercel
+Para executar o *Chatty* em desenvolvimento , siga estas etapas:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+
+npm run dev
+
+  
+
+ou
+
+  
+
+yarn dev
+
+```
+
+Para acesso aos recursos do firebase, é preciso criar um projeto no console do Firebase e adicionar seus dados de conexão ao arquivo de variáveis locais
+
+
+  
+
+[⬆ Voltar ao topo](#Chatty)<br>
+
+<br>
+<br>
+<br>
+
+  ***made with :purple_heart: by [@NickSant](https://github.com/NickSant)***
+
+
