@@ -1,4 +1,4 @@
-import { Drawer } from "@material-ui/core";
+import GlobalStyles from "../../styles/global";
 import Head from "next/head";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -16,6 +16,7 @@ const Chat = ({ chat, messages }) => {
 
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyles />
       <Container>
         <Head>
           <title> Chat with {getRecipientEmail(chat.users, user)}</title>
