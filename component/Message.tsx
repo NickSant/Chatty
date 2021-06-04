@@ -38,7 +38,7 @@ const MessageElement = styled.p`
 
 const Sender = styled(MessageElement)`
   margin-left: auto;
-  background-color: #123151;
+  background-color: ${props => props.theme.colors.primary};
   color: white;
 
   span{
@@ -48,7 +48,7 @@ const Sender = styled(MessageElement)`
 
 const Receiver = styled(MessageElement)`
   text-align: left;
-  background-color: whitesmoke;
+  background-color: ${props => props.theme.colors.lighty};
 `;
 
 const TimeStamp = styled.span`

@@ -8,10 +8,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { auth, db } from "../firebase";
 import Chat from "./Chat";
-import { Close } from "@material-ui/icons";
+import { Close, NightsStay, WbSunnyOutlined } from "@material-ui/icons";
+import { useTheme } from "../contexts/ThemeContext";
 
 const Sidebar = ({ type = "", isOpen = true, setIsOpen = () => {} }) => {
   const [user] = useAuthState(auth);
+  const { theme, switchTheme } = useTheme();
   const userChatRef = db
     .collection("chats")
     .where("users", "array-contains", user.email);
@@ -43,12 +45,12 @@ const Sidebar = ({ type = "", isOpen = true, setIsOpen = () => {} }) => {
   return (
     <>
       <DrawerContainer open={isOpen} variant="persistent" anchor="left">
-        <Container type="drawer">
+        <Container className="drawer">
           <Header>
             <UserAvatar src={user.photoURL} onClick={() => auth.signOut()} />
             <IconsContainer>
-              <IconButton>
-                <MoreVertIcon />
+              <IconButton onClick={() => switchTheme()}>
+                {theme.title === "dark" ? <WbSunnyOutlined /> : <NightsStay />}
               </IconButton>
 
               <IconButton onClick={setIsOpen}>
@@ -80,8 +82,8 @@ const Sidebar = ({ type = "", isOpen = true, setIsOpen = () => {} }) => {
         <Header>
           <UserAvatar src={user.photoURL} onClick={() => auth.signOut()} />
           <IconsContainer>
-            <IconButton>
-              <ChatIcon />
+            <IconButton onClick={() => switchTheme()}>
+              {theme.title === "dark" ? <WbSunnyOutlined /> : <NightsStay />}
             </IconButton>
 
             <IconButton>
@@ -127,8 +129,10 @@ const DrawerContainer = styled(Drawer)`
 `;
 
 const Container = styled.div`
+  background-color: ${(props) => props.theme.colors.background_alt};
+  color: ${(props) => props.theme.colors.text};
   flex: 0.45;
-  border-right: 1px solid whitesmoke;
+  border-right: ${(props) => "1px solid" + props.theme.colors.background};
   height: 100vh;
   min-width: 300px;
   max-width: 350px;
@@ -142,7 +146,7 @@ const Container = styled.div`
   scrollbar-width: none;
 
   @media (max-width: 499px) {
-    display: ${(props) => (props.type === "drawer" ? "block" : "none")};
+    display: ${(props: any) => (props.className === "drawer" ? "block" : "none")};
     min-width: 100vw;
     max-width: 100vw;
     height: 80vh;
@@ -153,13 +157,13 @@ const Header = styled.div`
   display: flex;
   position: sticky;
   top: 0;
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.background_alt};
   z-index: 1;
   justify-content: space-between;
   align-items: center;
   padding: 15px;
   height: 80px;
-  border-bottom: 1px solid whitesmoke;
+  border-bottom: ${(props) => "1px solid" + props.theme.colors.background};
 `;
 
 const UserAvatar = styled(Avatar)`
@@ -182,6 +186,7 @@ const SearchInput = styled.input`
   outline-width: 0;
   border: none;
   flex: 1;
+  background-color: transparent;
 `;
 
 const ChatList = styled.div`
@@ -201,9 +206,15 @@ const ChatList = styled.div`
 const SidebarButton = styled(Button)`
   width: 100%;
   &&& {
-    border-top: 1px solid whitesmoke;
-    border-bottom: 1px solid whitesmoke;
+    border-top: ${(props) => "1px solid" + props.theme.colors.background};
+    border-bottom: ${(props) => "1px solid" + props.theme.colors.background};
+    color: ${(props) => props.theme.colors.text};
   }
 `;
 
-const IconsContainer = styled.div``;
+const IconsContainer = styled.div`
+  svg {
+    fill: ${(props) => props.theme.colors.text};
+    color: ${(props) => props.theme.colors.text};
+  }
+`;

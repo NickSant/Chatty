@@ -2,36 +2,40 @@ import { Drawer } from "@material-ui/core";
 import Head from "next/head";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import ChatScreen from "../../component/ChatScreen";
 import Sidebar from "../../component/Sidebar";
+import { useTheme } from "../../contexts/ThemeContext";
 import { auth, db } from "../../firebase";
 import getRecipientEmail from "../../utils/getRecipientEmail";
 
 const Chat = ({ chat, messages }) => {
   const [user] = useAuthState(auth);
+  const { theme } = useTheme();
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
 
   return (
-    <Container>
-      <Head>
-        <title> Chat with {getRecipientEmail(chat.users, user)}</title>
-      </Head>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <Head>
+          <title> Chat with {getRecipientEmail(chat.users, user)}</title>
+        </Head>
 
-      <Sidebar
-        type="drawer"
-        isOpen={isDrawerOpen}
-        setIsOpen={() => setIsDrawerOpen(!isDrawerOpen)}
-      />
-
-      <ChatContainer>
-        <ChatScreen
-          openChats={() => setIsDrawerOpen(!isDrawerOpen)}
-          chat={chat}
-          messages={messages}
+        <Sidebar
+          type="drawer"
+          isOpen={isDrawerOpen}
+          setIsOpen={() => setIsDrawerOpen(!isDrawerOpen)}
         />
-      </ChatContainer>
-    </Container>
+
+        <ChatContainer>
+          <ChatScreen
+            openChats={() => setIsDrawerOpen(!isDrawerOpen)}
+            chat={chat}
+            messages={messages}
+          />
+        </ChatContainer>
+      </Container>
+    </ThemeProvider>
   );
 };
 

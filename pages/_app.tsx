@@ -5,6 +5,8 @@ import Login from "./login";
 import Loading from "../component/Loading";
 import { useEffect } from "react";
 import firebase from "firebase";
+import { ThemeContextProvider } from "../contexts/ThemeContext";
+import { ThemeProvider } from "styled-components";
 
 function MyApp({ Component, pageProps }) {
   const [user, loading] = useAuthState(auth);
@@ -25,7 +27,12 @@ function MyApp({ Component, pageProps }) {
   if (loading) return <Loading />;
 
   if (!user) return <Login />;
-  return <Component {...pageProps} />;
+
+  return (
+    <ThemeContextProvider>
+      <Component {...pageProps} />
+    </ThemeContextProvider>
+  );
 }
 
 export default MyApp;
