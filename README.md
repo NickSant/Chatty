@@ -34,7 +34,7 @@ A base do projeto está pronta, mas ainda há melhorias à serem adicionadas com
 
 - [x] Responsividade mobile
 
-- [ ] Tema dark
+- [x] Tema dark
 
 - [ ] OAuth com outros provedores, como Facebook
 
