@@ -2,6 +2,7 @@ import { useTheme } from "../contexts/ThemeContext";
 import Head from "next/head";
 import Sidebar from "../component/Sidebar";
 import { ThemeProvider } from "styled-components";
+import GlobalStyles from "../styles/global";
 
 export default function Home() {
   const { theme } = useTheme();
@@ -9,6 +10,7 @@ export default function Home() {
   console.log(theme);
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyles />
       <div>
         <Head>
           <title>Chatty</title>
