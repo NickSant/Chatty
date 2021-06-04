@@ -145,22 +145,25 @@ const ChatScreen = ({ chat, messages, openChats }) => {
 
 export default ChatScreen;
 
-const IconButtonContainer = styled(IconButton)`
+const IconButtonContainer = styled(IconButton)``;
 
+const Container = styled.div`
+  svg {
+    fill: ${(props) => props.theme.colors.text};
+    color: ${(props) => props.theme.colors.text};
+  }
 `;
-
-const Container = styled.div``;
 
 const Header = styled.div`
   position: sticky;
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.background_alt};
   z-index: 100;
   top: 0;
   display: flex;
   padding: 11px;
   height: 80px;
   align-items: center;
-  border-bottom: 1px solid whitesmoke;
+  border-bottom: ${(props) => "1px solid" + props.theme.colors.background};
 
   .menu {
     display: none;
@@ -172,6 +175,8 @@ const Header = styled.div`
 `;
 
 const HeaderInformation = styled.div`
+  color: ${(props) => props.theme.colors.text};
+  fill: ${(props) => props.theme.colors.text};
   margin-left: 15px;
   flex: 1;
 
@@ -190,11 +195,16 @@ const HeaderInformation = styled.div`
   }
 `;
 
-const HedaerIcons = styled.div``;
+const HedaerIcons = styled.div`
+  svg {
+    fill: ${(props) => props.theme.colors.text};
+    color: ${(props) => props.theme.colors.text};
+  }
+`;
 
 const MessageContainer = styled.div`
   padding: 30px;
-  background-color: #e5ded8;
+  background-color: ${(props) => props.theme.colors.bg_chat};
   min-height: 90vh;
 `;
 
@@ -208,7 +218,7 @@ const InputContainer = styled.form`
   padding: 10px;
   position: sticky;
   bottom: 0;
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.background_alt};
   z-index: 100;
 `;
 
@@ -220,6 +230,6 @@ const Input = styled.input`
   padding: 10px;
   position: sticky;
   bottom: 0;
-  background-color: whitesmoke;
+  background-color: ${(props) => props.theme.colors.background};
   border-radius: 10px;
 `;

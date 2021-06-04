@@ -10,6 +10,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
+    "@types/styled-components": "^5.1.9",
     "better-react-spinkit": "^2.0.4",
     "dotenv": "^10.0.0",
     "email-validator": "^2.0.4",
